@@ -1,0 +1,40 @@
+html {
+    background-image: url("ghibli.jpg");
+    background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 100%;
+}
+h1	{
+	text-align: center;
+	background-color: #547a7b;
+	font-family: Georgia, 'Times New Roman', Arial, Serif;
+	border: 2px dotted;
+	border-color: blue;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	padding-right: 15px; 
+	width: 250px;
+	margin-bottom: 20px; 
+}
+p {
+	text-align: justify;
+    background-color: #547a7b;
+    font-style: italic;
+    padding: 20px;
+    border: 3px black;
+    border-right-style: dotted;
+    border-top-style: dashed;
+    border-left-style: double;
+    border-right-style: solid;
+    border-bottom-style: hidden;
+    width: 500px;
+}
+body span {
+    font-style: bold, italic;
+    color: 	#d6e0b2;
+    margin: 2px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
