@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Second Page</title>
+	<script>
+		function replaceImage() {
+			document.getElementById("myImage").src = "first_image.jpg";
+		}
+		function revertImage() {
+			document.getElementById("myImage").src = "second_image.jpg";
+		}
+		
+	</script>
+</head>
+<body>
+	<img id="myImage" src="first_image.jpg">
+	<br>
+	<button onclick="replaceImage()">Replace Image</button>
+	<button onclick="revertImage()">Revert Image</button>
+</body>
+</html>
