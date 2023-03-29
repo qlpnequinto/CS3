@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta name="description" content="Numerology"/>
+        <meta name="subject" content="Computer Science 3">
+        <meta name="copyright"content="QLPNequinto_Sodium">
+        <meta name="language" content="EN">
+        <meta name="author" content="Quinn Lyndon P. Nequinto, qlpnequinto@src.pshs.edu.ph">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Numerology</title>
+		<!-- provide the necessary meta tags -->
+        <style>
+        	body {background: lightblue; 
+            	text-align: center;
+            	font-family: arial;
+                color: navy;
+            }
+            button {padding: 10px; background:violet }
+            span {font-size: 0.5em; color: maroon}
+        </style>
+
+	</head>
+<body>
+	<h1> Your Fortune is in your name </h1>
+	<h2> Your Name is: <span id="thename"> </span></h2>
+    <h2> Today's fortune: <span id="fortune"> </span></h2>
+    
+    <button onclick="getFortune()"> Click here to enter your name </button>
+    <script>
+
+//Function that shows fortune based on name.
+function getFortune() {
+    const name = prompt("Enter your full name:");
+    document.getElementById("thename").textContent = name;
+    //Counts the sum of letters in the name input
+    let sum = 0;
+    for(let i=0; i<name.length; i++) {
+        if(name[i].match(/[a-zA-Z]/)) {
+            //If character is a letter, convert to uppercase and add it's numeric value to the sum.
+            sum += name[i].toUpperCase().charCodeAt(0) - 64;
+        } else if(name[i].match(/[0-9]/)) {
+            //If character is number, just add it to the sum.
+            sum += parseInt(name[i]);
+        }
+    }
+
+    //Function to reduce the sum to a single digit.
+    while(sum > 9) {
+        let temp = sum;
+        sum = 0;
+        while(temp > 0) {
+            sum += temp % 10;
+            temp = Math.floor(temp / 10);
+        }
+    }
+
+    //Assigns a fortune based on the single digit number.
+    let fortune;
+    switch(sum) {
+        case 0:
+            fortune = "Macrushback ka.";
+            break;
+        case 1:
+            fortune = "Way gid siya labot sa imo.";
+            break;
+        case 2:
+            fortune = "Di magiging kayo.";
+            break;
+        case 3:
+            fortune = "Masingko ka.";
+            break;
+        case 4:
+            fortune = "Bagsak sa exams.";
+            break;
+        case 5:
+            fortune = "Matipalo ka karon.";
+            break;
+        case 6:
+            fortune = "Di ka na magtaas.";
+            break;
+        case 7:
+            fortune = "Magclose kamo in the future.";
+            break;
+        case 8:
+            fortune = "Tubulon ka 'ron.";
+            break;
+        case 9:
+            fortune = "Laon habangbuhay.";
+            break;
+    }
+    document.getElementById("fortune").textContent = fortune;
+}
+   </script>
+</body>
+</html>

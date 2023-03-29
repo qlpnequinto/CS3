@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Pisay Canteen</title>
+    <!-- type in the necessary meta tags -->
+        <meta name="description" content="Pisay Canteen"/>
+		<meta name="subject" content="Computer Science 3">
+		<meta name="copyright"content="QLPNequinto_Sodium">
+		<meta name="language" content="EN">
+        <meta name="author" content="Quinn Lyndon P. Nequinto, qlpnequinto@src.pshs.edu.ph">
+	<style>
+      span {color: blue; text-decoration:underline}
+      button {width: 100px; padding: 5px; background: pink;}
+	</style>
+
+	</head>
+<body>
+	<h1> Welcome to the Pisay SRC Cafeteria </h1>
+	<h2> Please select from the following items </h2>
+	<!--- provide your own 3 items and their prices in the list --->
+	<ol>
+		<li> Spaghetti: Php70.00 </li>
+		<li> Yumburger: Php50.00 </li>
+		<li> Tuna pie: Php50.00 </li>
+	</ol>
+	<!-- the following will be used to display purchase information -->
+    <p> Item selected : <span id="item"> </span> </p>
+	<p> Qty bought : <span id="qty"> </span> </p>
+	<p> Amount to pay for the item: <span id="bill"> </span> </p>
+	<p> Current Total Bill <span id="tbill"> </span> </p>
+	<button onclick="buyItem()"> Buy an Item </button>
+	<button onclick="clearFields()"> Clear </button>
+    
+    <script>
+    	//Define the necessary variables
+        var currentItem = "";
+        var currentPrice = 0;
+        var currentQty = 0;
+        var totalBill = 0;
+        
+        //Function for buying item/s
+        function buyItem() {
+            //Prompt asking for the item number and quantity
+            var itemNum = prompt("Enter item number:");
+            var qty = prompt("Enter quantity:");
+            
+            //Consider if quantity is a valid integer
+            if (Number.isInteger(parseInt(qty))) {
+                currentQty = parseInt(qty);
+                //settle the item selected and its price
+                switch(itemNum) {
+                    case "1":
+                        currentItem = "Spaghetti";
+                        currentPrice = 70.00;
+                        break;
+                    case "2":
+                        currentItem = "Yumburger";
+                        currentPrice = 50.00;
+                        break;
+                    case "3":
+                        currentItem = "Tuna pie";
+                        currentPrice = 50.00;
+                        break;
+                    default:
+                        //Prompt if the item number is invalid
+                        alert("Invalid item number.");
+                        return;
+                }
+                
+                //Calculates the bill for the item
+                var amountToPay = currentQty * currentPrice;
+                
+                //Updates the screen
+                document.getElementById("item").innerHTML = currentItem;
+                document.getElementById("qty").innerHTML = currentQty;
+                document.getElementById("bill").innerHTML = amountToPay.toFixed(2);
+                
+                //Updates the total bill of the user
+                totalBill += amountToPay;
+                document.getElementById("tbill").innerHTML = totalBill.toFixed(2);
+            } else {
+                //Prompt if the quantity entered is invalid.
+                alert("Invalid quantity.");
+            }
+        }
+        
+        //Functions that clear the fields
+        function clearFields() {
+            currentItem = "";
+            currentPrice = 0;
+            currentQty = 0;
+            totalBill = 0;
+            document.getElementById("item").innerHTML = "";
+            document.getElementById("qty").innerHTML = "";
+            document.getElementById("bill").innerHTML = "";
+            document.getElementById("tbill").innerHTML = "";
+        }
+    </script>
+</body>
+</html>
