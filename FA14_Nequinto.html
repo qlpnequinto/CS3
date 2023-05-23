@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Learning Website Sign-up Sheet</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="subject" content="Computer Science 3">
+		<meta name="copyright"content="QLPNequinto_Sodium">
+		<meta charset="UTF-8">
+		<meta name="author" content="Quinn Lyndon P. Nequinto, qlpnequinto@src.pshs.edu.ph">
+		<style>
+			body {
+				background-color: #1f2833;
+			}
+	
+			form {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			fieldset {
+				border: 5px solid #45a29e;
+				padding: 50px;
+				margin: 0;
+				width: 100%;
+				max-width: 400px;
+				background-color: #c5c6c7;
+			}
+
+			legend {
+                text-align: center;
+				font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+				color: #66fcf1;
+				font-size: 50px;
+			}
+
+			label {
+				display: block;
+				margin-bottom: 10px;
+				font-weight: bold;
+				font-size: 20px;
+				color: #333;
+			}
+
+			input[type="text"], input[type="email"], select, textarea, input[type="password"] {
+				border: 2px solid #ccc;
+				border-radius: 5px;
+				padding: 8px;
+				font-size: 18px;
+				width: 100%;
+				margin-bottom: 15px;
+			}
+
+			input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focus, input[type="password"]:focus {
+				border-color: #6cb2eb;
+				outline: none;
+			}
+
+			input[type="submit"], input[type="reset"] {
+				background-color: #6cb2eb;
+				color: #fff;
+				padding: 8px 15px;
+				border-radius: 5px;
+				font-size: 25px;
+				border: none;
+				margin-top: 15px;
+				cursor: pointer;
+				transition: all 0.3s ease-in-out;
+			}
+
+			input[type="submit"]:hover, input[type="reset"]:hover {
+				background-color: #3a8ac0;
+			}
+
+			.output {
+				margin-top: 30px;
+				background-color: white;
+				padding: 15px;
+				width: 100%;
+				max-width: 400px;
+				border: 5px solid gray;
+				border-radius: 5px;
+				box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+			}
+
+			.output p {
+				margin: 0;
+				padding: 8px 0;
+				font-size: 20px;
+				color: #333;
+			}
+		</style>
+	</head>
+	<body>
+		<form id="signup-form">
+			<fieldset>
+				<legend>Sign-up Sheet</legend>
+				
+				<label for="name">Name:</label>
+				<input type="text" id="name" name="Name" required onfocus="focusFunction(this)" onblur="blurFunction(this)">
+
+				<label for="username">Preferred username:</label>
+				<input type="text" id="username" name="Username" required onfocus="focusFunction(this)" onblur="blurFunction(this)">
+
+				<label for="gender">Gender:</label>
+				<select id="gender" name="Gender" required onfocus="focusFunction(this)" onblur="blurFunction(this)">
+					<option value="">Select gender</option>
+					<option value="Male">Male</option>
+					<option value="Female">Female</option>
+					<option value="Prefer not to mention">Prefer not to mention</option>
+				</select>
+
+				<label for="password">Password:</label>
+				<input type="password" id="password" name="Password" required onfocus="focusFunction(this)" onblur="blurFunction(this)">
+
+				<label for="email">Email address:</label>
+				<input type="email" id="email" name="Email" required onfocus="focusFunction(this)" onblur="blurFunction(this)">
+
+				<label for="address">Address:</label>
+				<textarea id="address" name="Address" required onfocus="focusFunction(this)" onblur="blurFunction(this)"></textarea>
+
+				<label for="interest">Short paragraph on your interest:</label>
+				<textarea id="interest" name="Interest" required onfocus="focusFunction(this)" onblur="blurFunction(this)"></textarea>
+			</fieldset>
+
+			<input type="submit" value="Submit">
+			<input type="reset" value="Reset">
+		</form>
+
+		<div class="output"></div>
+
+		<script>
+			function focusFunction(input) {
+				if (input.checkValidity()) {
+					input.style.border = "2px solid green";
+				}
+			}
+
+			function blurFunction(input) {
+				if (input.checkValidity()) {
+					input.style.border = "2px solid green";
+				} 
+				else {
+					input.style.border = "2px solid red";
+				}
+			}
+
+			var form = document.getElementById("signup-form");
+			var output = document.querySelector(".output");
+
+			form.addEventListener("submit", function (event) {
+				event.preventDefault();
+				var formData = new FormData(event.target);
+				var entries = formData.entries();
+				let outputText = "<p><strong>User Information:</strong></p>";
+				for (var entry of entries) {
+					outputText += `<p><strong>${entry[0]}:</strong> ${entry[1]}</p>`;
+				}
+				output.innerHTML = outputText;
+			});
+			
+			var resetButton = document.querySelector("input[type='reset']");
+			resetButton.addEventListener("click", function (event) {
+				output.innerHTML = "";
+				document.getElementById("name").style.border = "";
+				document.getElementById("username").style.border = "";
+				document.getElementById("gender").style.border = "";
+				document.getElementById("password").style.border = "";
+				document.getElementById("email").style.border = "";
+				document.getElementById("address").style.border = "";
+				document.getElementById("interest").style.border = "";
+			});
+		</script>
+	</body>
+</html>
